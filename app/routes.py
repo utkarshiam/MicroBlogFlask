@@ -7,6 +7,7 @@ Created on Sat Jan  5 21:20:22 2019
 """
 from flask import render_template
 from app import app
+from app.forms import LoginForm
 
 @app.route('/')
 @app.route('/index')
@@ -23,3 +24,7 @@ def index():
         }
     ]
     return render_template('index.html', title='Home', user=user,posts=posts)
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign In', form=form)
